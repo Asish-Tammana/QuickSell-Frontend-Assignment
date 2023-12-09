@@ -1,0 +1,30 @@
+.navbar-container {
+    padding: 10px;
+}
+
+.display-button {
+    width: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FEFFFE;
+    border: 2px solid #919299;
+    color: #919299;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.button-text {
+    color: black;
+}
+
+.main-board {
+    background-color: #f4f5f8;
+    height: 100vh;
+    margin-top: 0px;
+    padding: 30px;
+    padding-top: 10px;
+}
+

@@ -1,0 +1,31 @@
+.display-options-container {
+    width: 18%;
+    background-color: #fff;
+    border: 1px solid #919299;
+    border-radius: 10px;
+    position: fixed;
+    height: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.display-options-row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.display-options-title{
+    color: #919299;
+}
+
+.select-menu {
+    padding: 2px;
+    margin: 0 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+}
