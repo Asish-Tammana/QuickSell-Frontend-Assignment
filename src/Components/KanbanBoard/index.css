@@ -22,9 +22,27 @@
 
 .main-board {
     background-color: #f4f5f8;
-    height: 100vh;
+    min-height: 100vh;
     margin-top: 0px;
     padding: 30px;
     padding-top: 10px;
 }
 
+.dashboard-headings{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.tasks-list-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-column{
+    margin: 10px;
+    display:inline-block;
+    width: max-content;
+    flex: 1;
+}

@@ -1,0 +1,35 @@
+.card-container{
+    background-color: #fffefe;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #919299;
+    border-radius: 10px;
+}
+
+.card-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.user-image{
+    height: 30px;
+    width: 30px;
+}
+
+.tag-container{
+    color: #6b6e74;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dot{
+    height: 15px;
+    width: 15px;
+    background-color: #bfc3c8;
+    border-radius: 30px;
+    margin-right: 10px;
+}

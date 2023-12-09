@@ -1,13 +1,33 @@
 import { useContext } from "react";
 import { KanbanBoardContext } from "../../Context/context";
 import OptionsContainer from "../OptionsContainer";
+import TaskCard from "../TaskCard";
 import { HiMiniAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
 import './index.css'
 
+const priorityHeadings = [
+  "No Priority",
+  "Low",
+  "Medium",
+  "High",
+  "Urgent"
+]
 const KanbanBoard = () => {
 
-  const { displayList ,showBox, toggleBoxVisibility, } = useContext(KanbanBoardContext)
+  const { usersList, userNamesObj, groupType, displayListObj, showBox, toggleBoxVisibility, } = useContext(KanbanBoardContext)
+  let headings = null;
+
+  if (Object.keys(displayListObj)[0] === '0') {
+    headings = priorityHeadings
+  } else if (Object.keys(displayListObj)[0] === 'usr-1') {
+    headings = usersList.map(function (user) {
+      return user.name;
+    });
+  } else {
+    headings = Object.keys(displayListObj)
+  }
+
 
 
   return (
@@ -21,7 +41,20 @@ const KanbanBoard = () => {
       </nav>
       <div className="main-board">
         {showBox && <OptionsContainer />}
-        <h1>hi</h1>
+        <div className="tasks-list-container">
+          {Object.keys(displayListObj).map(each => {
+            const tasksList = displayListObj[each]
+            const jsx = (<div className="task-column" key={each}>
+              {groupType === 'priority' ?  <h3>{priorityHeadings[each]}</h3> : groupType === 'status' ? <h3>{each}</h3> : <h3>{userNamesObj[each]}</h3>}
+              {
+                tasksList.map(eachTask => {
+                  return <TaskCard key={each.id} taskDetails={eachTask} />
+                })
+              }
+            </div>)
+            return jsx
+          })}
+        </div>
       </div>
     </div>
   );

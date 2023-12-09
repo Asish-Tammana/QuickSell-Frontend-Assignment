@@ -8,7 +8,8 @@ export const KanbanBoardProvider = ({ children }) => {
     const [showBox, toggleBoxVisibility] = useState(false)
     const [groupType, updateGroupType] = useState("priority")
     const [orderType, updateOrderType] = useState("priority")
-    const [displayList, updateDisplayList] = useState([])
+    const [displayListObj, updateDisplayList] = useState({})
+    const [userNamesObj, updateUsernameObj] = useState({})
 
     const modifyDisplayList = () => {
         let modifedListObj = {}
@@ -53,6 +54,11 @@ export const KanbanBoardProvider = ({ children }) => {
         const responseData = await response.json()
         updateTicketsList(responseData.tickets)
         updateUsersList(responseData.users)
+        let userNamesObj = responseData.users.reduce(function(result, user) {
+            result[user.id] = user.name;
+            return result;
+        }, {});
+        updateUsernameObj(userNamesObj)
 
     }
 
@@ -72,7 +78,7 @@ export const KanbanBoardProvider = ({ children }) => {
 
 
     return (
-        <KanbanBoardContext.Provider value={{ usersList, displayList, showBox, groupType, orderType, displayList, toggleBoxVisibility, updateGroupType, updateOrderType }}>
+        <KanbanBoardContext.Provider value={{ usersList,userNamesObj, displayListObj, showBox, groupType, orderType, toggleBoxVisibility, updateGroupType, updateOrderType }}>
             {children}
         </KanbanBoardContext.Provider>
     );
