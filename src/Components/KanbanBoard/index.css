@@ -28,10 +28,22 @@
     padding-top: 10px;
 }
 
-.dashboard-headings{
+.heading-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.heading-additional-icons{
+    width: 17%;
+    color: #a7a9af;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .tasks-list-container{

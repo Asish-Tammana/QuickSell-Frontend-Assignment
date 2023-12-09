@@ -4,6 +4,8 @@ import OptionsContainer from "../OptionsContainer";
 import TaskCard from "../TaskCard";
 import { HiMiniAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaPlus } from "react-icons/fa";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import './index.css'
 
 const priorityHeadings = [
@@ -45,7 +47,13 @@ const KanbanBoard = () => {
           {Object.keys(displayListObj).map(each => {
             const tasksList = displayListObj[each]
             const jsx = (<div className="task-column" key={each}>
-              {groupType === 'priority' ?  <h3>{priorityHeadings[each]}</h3> : groupType === 'status' ? <h3>{each}</h3> : <h3>{userNamesObj[each]}</h3>}
+              <div className="heading-container">
+                {groupType === 'priority' ? <h3>{priorityHeadings[each]}</h3> : groupType === 'status' ? <h3>{each}</h3> : <h3>{userNamesObj[each]}</h3>}
+                <div className="heading-additional-icons">
+                  <FaPlus />
+                  <HiOutlineDotsHorizontal />
+                </div>
+              </div>
               {
                 tasksList.map(eachTask => {
                   return <TaskCard key={each.id} taskDetails={eachTask} />

@@ -12,7 +12,11 @@ export const KanbanBoardProvider = ({ children }) => {
     const [userNamesObj, updateUsernameObj] = useState({})
 
     const modifyDisplayList = () => {
+
+
         let modifedListObj = {}
+        localStorage.setItem("quickSell", JSON.stringify({groupType, orderType}))
+
 
         ticketsList.map(each => {
             const category = each[groupType]
@@ -42,11 +46,18 @@ export const KanbanBoardProvider = ({ children }) => {
         }
 
         updateDisplayList(modifedListObj)
-        console.log(modifedListObj)
 
     }
 
     const getTicketsAndUsersList = async () => {
+
+        const stringfiedObj = localStorage.getItem('quickSell')
+        const obj = JSON.parse(stringfiedObj)
+        updateGroupType(obj.groupType)
+        updateOrderType(obj.orderType)
+
+        console.log(obj)
+
 
         const url = "https://api.quicksell.co/v1/internal/frontend-assignment"
 
@@ -59,6 +70,8 @@ export const KanbanBoardProvider = ({ children }) => {
             return result;
         }, {});
         updateUsernameObj(userNamesObj)
+
+        
 
     }
 
